@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-container.innerHTML = "";
+//container.innerHTML = "";
 for (let i = 1; i < 10; i++){  
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
@@ -64,3 +64,48 @@ const disappear = (event) =>{
 }
 
 box4.addEventListener("click", disappear);
+
+//box_5:
+const box5 = document.getElementById("5");
+
+const circularise = () => {
+    const boxes = document.querySelectorAll(".box");
+    for (box of boxes){
+        box.style.borderRadius = box.style.borderRadius === "50%" ? "" : "50%";
+        /*if (box.style.borderRadius == "50%"){
+            box.style.borderRadius = "";
+        }
+        else{
+            box.style.borderRadius = "50%";
+        } */
+    }
+
+}
+box5.addEventListener("click", circularise);
+
+//box6 kurzorpozíciók
+const box6 = document.getElementById("6");
+document.addEventListener("mousemove", (event) =>{
+    let x = event.clientX;
+    let y = event.clientY;
+    box6.style.fontSize = "25px";
+    box6.innerHTML = `X:${x}<br>Y:${y}`;
+})
+
+//box7 number copy
+const box7 = document.getElementById("7");
+const input7 = document.querySelector(".container2 .seven input");
+const button7 = document.querySelector(".container2 .seven button");
+
+const write = () =>{
+    box7.innerText = `${input7.value}`
+}
+
+input7.addEventListener("click", write);
+
+//box8 az input mezo tartalma azonnal a box8-ba irodik
+const box8 = document.getElementById("8");
+const input8 = document.querySelector(".eight input");
+input8.addEventListener("keydowm", (event) =>{
+    box8.innerText = event.key;
+})

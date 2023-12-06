@@ -83,7 +83,7 @@ const circularise = () => {
 }
 box5.addEventListener("click", circularise);
 
-//box6 kurzorpozíciók
+//box_6 kurzorpozíciók
 const box6 = document.getElementById("6");
 document.addEventListener("mousemove", (event) =>{
     let x = event.clientX;
@@ -92,7 +92,7 @@ document.addEventListener("mousemove", (event) =>{
     box6.innerHTML = `X:${x}<br>Y:${y}`;
 })
 
-//box7 number copy
+//box_7 number copy
 const box7 = document.getElementById("7");
 const input7 = document.querySelector(".container2 .seven input");
 const button7 = document.querySelector(".container2 .seven button");
@@ -103,9 +103,47 @@ const write = () =>{
 
 input7.addEventListener("click", write);
 
-//box8 az input mezo tartalma azonnal a box8-ba irodik
+//box_8 az input mezo tartalma azonnal a box8-ba irodik
 const box8 = document.getElementById("8");
 const input8 = document.querySelector(".eight input");
 input8.addEventListener("keydowm", (event) =>{
     box8.innerText = event.key;
 })
+
+//box_9 mini kalkulátor
+const calc = document.querySelector(".nine button");
+
+const calculate = () => {
+    const box_9 = document.getElementById("9");
+    let result = Number(document.getElementById("9").innerText);
+    const operator = document.querySelector(".nine select").value;
+    const operandus = document.querySelector(".nine input").value;
+
+    switch (operator){
+        case "add":
+            result += Number(operandus);
+            break;
+        case "sub":
+            result -= Number(operandus);
+            break;
+        case "multiply":
+            result *= Number(operandus);
+            break;
+        case "div":
+            result /= Number(operandus);
+            break;
+        default:
+            break;
+    }
+    //box_9.innerText = `${result}`;
+    box_9.innerText = operandus ? result : "-";
+    if (!operandus) {
+        setTimeout(()=>{
+            box_9.innerText = "9";
+            result = 9;
+        },1000);
+    }
+}
+
+
+calc.addEventListener("click", calculate);
